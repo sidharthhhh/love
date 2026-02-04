@@ -1,0 +1,244 @@
+:root {
+    --color-bg-start: #FFD1DC;
+    /* Blush Pink */
+    --color-bg-end: #E5B8F4;
+    /* Lavender */
+    --color-primary: #FF4D6D;
+    /* Rose Red */
+    --color-secondary: #FF8FA3;
+    --color-text: #590d22;
+    --color-white: #ffffff;
+    --font-heading: 'Fredoka One', cursive;
+    --font-body: 'Nunito', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: var(--font-body);
+    background: linear-gradient(135deg, var(--color-bg-start), var(--color-bg-end));
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    /* Prevent scroll */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-text);
+    position: relative;
+    /* Custom Cursor: Cupid Heart Arrow */
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="%23FF4D6D" stroke="%23ffffff" stroke-width="1.5"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>') 16 16, auto;
+}
+
+/* Typing Cursor Effect */
+.cursor-blink {
+    display: inline-block;
+    width: 3px;
+    height: 1em;
+    background-color: var(--color-primary);
+    margin-left: 2px;
+    animation: blink 1s step-end infinite;
+    vertical-align: middle;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+/* Sticker */
+.sticker {
+    margin-top: 20px;
+    max-width: 250px;
+    /* Decent size */
+    opacity: 0;
+    transform: scale(0);
+}
+
+/* Floating Background Elements */
+.floating-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+/* Create some CSS-only floating hearts via pseudo-elements later or JS, 
+   but for now let's just create a pattern overlay or simplified shapes */
+.floating-bg::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(var(--color-white) 15%, transparent 16%),
+        radial-gradient(var(--color-white) 15%, transparent 16%);
+    background-size: 60px 60px;
+    background-position: 0 0, 30px 30px;
+    opacity: 0.1;
+    animation: drift 20s linear infinite;
+}
+
+@keyframes drift {
+    from {
+        background-position: 0 0, 30px 30px;
+    }
+
+    to {
+        background-position: 0 60px, 30px 90px;
+    }
+}
+
+.container {
+    text-align: center;
+    z-index: 10;
+    padding: 20px;
+}
+
+.question {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+    text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.5);
+    color: var(--color-primary);
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    position: relative;
+    /* Context for absolute positioning if needed */
+    flex-wrap: wrap;
+}
+
+.btn {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    padding: 12px 32px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 15px rgba(255, 77, 109, 0.3);
+    position: relative;
+    user-select: none;
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+.btn-yes {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.btn-yes:hover {
+    background-color: #ff3355;
+    box-shadow: 0 6px 20px rgba(255, 77, 109, 0.5);
+}
+
+.btn-no {
+    background-color: var(--color-white);
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    z-index: 100;
+    /* Ensure visibility */
+    position: relative;
+}
+
+/* Success State */
+.success-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    z-index: 20;
+    flex-direction: column;
+}
+
+.success-msg {
+    font-family: var(--font-heading);
+    font-size: 4rem;
+    color: var(--color-primary);
+    text-align: center;
+    line-height: 1.2;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Utilities for JS Animation classes */
+.shake {
+    animation: shake 0.5s cubic-bezier(.36, .07, .19, .97) both;
+}
+
+@keyframes shake {
+
+    10%,
+    90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+
+    20%,
+    80% {
+        transform: translate3d(2px, 0, 0);
+    }
+
+    30%,
+    50%,
+    70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+
+    40%,
+    60% {
+        transform: translate3d(4px, 0, 0);
+    }
+}
+
+@media (max-width: 600px) {
+    .question {
+        font-size: 2rem;
+    }
+
+    .btn {
+        font-size: 1.2rem;
+        padding: 10px 24px;
+        min-width: 120px;
+    }
+}
+
+.subtext {
+    font-size: 0.6em;
+    display: block;
+    margin-top: 5px;
+    font-weight: normal;
+    color: var(--color-primary);
+    line-height: 1.2;
+    white-space: nowrap;
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Will You Be My Valentine? 💖</title>
+    <meta name="description"
+        content="A cute, interactive Valentine's Day proposal website with anime-style animations and a playful 'No' button chase! 💖">
+    <meta name="keywords" content="Valentine, Proposal, Anime, Love, Interactive Website, Cute, Funny, GSAP">
+    <meta name="author" content="Sidharth">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sidharthhhh.github.io/love/">
+    <meta property="og:title" content="Will You Be My Valentine? 💖">
+    <meta property="og:description"
+        content="A cute, interactive Valentine's Day proposal website with anime-style animations! 🥺👉👈">
+    <meta property="og:image" content="https://media.giphy.com/media/du8gnf5kirPkf8v98/giphy.gif">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://sidharthhhh.github.io/love/">
+    <meta property="twitter:title" content="Will You Be My Valentine? 💖">
+    <meta property="twitter:description"
+        content="A cute, interactive Valentine's Day proposal website with anime-style animations! 🥺👉👈">
+    <meta property="twitter:image" content="https://media.giphy.com/media/du8gnf5kirPkf8v98/giphy.gif">
+    <meta property="twitter:creator" content="@Sidhart64113485">
+    <meta property="twitter:site" content="@Sidhart64113485">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Background Elements -->
+    <div class="floating-bg"></div>
+    <div class="overlay"></div>
+
+    <main class="container">
+        <h1 class="question" id="mainQuestion">Will you be my Valentine? 💖</h1>
+
+        <div class="button-container">
+            <button id="yesBtn" class="btn btn-yes">YES ❤️</button>
+            <button id="noBtn" class="btn btn-no">NO 💔</button>
+        </div>
+    </main>
+
+    <!-- Success Container (Hidden initially) -->
+    <div id="successContainer" class="success-container hidden">
+        <h1 class="success-msg">YAYYY!!! 💘<br>I knew it 🥰</h1>
+        <div class="confetti-container"></div>
+    </div>
+
+    <!-- Background Music (User to provide 'music.mp3' or we use a fallback) -->
+    <audio id="bgMusic" loop>
+        <source src="music.mp3" type="audio/mpeg">
+        <!-- Use a fallback online source for immediate demo if local fails -->
+        <!-- Just an empty logic hook for now -->
+    </audio>
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+    <!-- Logic -->
+    <script src="script.js" defer></script>
+</body>
+
+</html>
